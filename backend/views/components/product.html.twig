@@ -1,0 +1,37 @@
+<div class="mt-3">
+	<div class="row g-3">
+		<div class="col-sm-6">
+			<form id="form-product">
+				<div class="row g-3">
+					<input type="text" class="d-none" id="description" placeholder="" value="{{ product.prd_id }}" required="">
+
+					<div class="col-12">
+						<label for="description" class="form-label">Descrição</label>
+						<input type="text" class="form-control" id="description" placeholder="" value="{{ product.prd_name }}" required="">
+					</div>
+
+					<div class="col-12">
+						<label for="price" class="form-label">Valor</label>
+						<div class="input-group has-validation">
+							<span class="input-group-text">R$</span>
+							<input type="text" class="form-control" id="price" placeholder="" value="{{ product.prd_price }}" required="">
+						</div>
+					</div>
+
+					<div class="col-12">
+						<label for="type" class="form-label">Tipo</label>
+						<select class="form-select" id="country" required="">
+							<option value="">Escolher...</option>
+							{% for type in types %}
+								<option value="{{ type.tpo_id }}">{{ type.tpo_description }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="/assets/js/product.js"></script>
+
+</div>
