@@ -9,7 +9,7 @@ O frontend em uso foi feito usando PHP.
 
 A ideia foi fazer um exemplo de um backend em PHP que funcione como uma API, com suporte a `JWT` e `Middlewares`, para controlar permissões de usuários, manutenção das rotas e alta escalabilidade.
 
-![Tela de Ponto de Venda](https://github.com/edimilsonassis/php-rest-mini-market/blob/61308163091a74c373d00ac73117fbc870139585/screenshots/localhost_8080_pdv.png)
+![Tela de Ponto de Venda](https://github.com/edimilsonassis/php-rest-mini-market/blob/71439d61b1865703140ca622d1410a93aed0ee1f/screenshots/php/localhost_8080_pdv.png)
 
 ## Observações
 
