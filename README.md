@@ -4,8 +4,8 @@ Este projeto consiste no desenvolvimento de um mini framework de backend em PHP,
 
 Todas as rotas Backend estão funcionais. Veja abaixo no Postman.
 
-Há uma versão do frontend feita em `NextJS` + `TailwindCSS` na pasta `frontend`. As requisições são feitas via HTTP para o backend.
 O frontend em uso foi feito usando PHP.
+Há uma versão do frontend feita em `NextJS` + `TailwindCSS` na pasta `frontend`. As requisições são feitas via HTTP para o backend.
 
 A ideia foi fazer um exemplo de um backend em PHP que funcione como uma API, com suporte a `JWT` e `Middlewares`, para controlar permissões de usuários, manutenção das rotas e alta escalabilidade.
 
@@ -35,9 +35,7 @@ cd /backend/public
 C:\PHP\php.exe -S localhost:8080
 ```
 
-Está incluso uma versão do PHP 8.2.1 usado no desenvolvimento, mas deverá funcionar no PHP 8+
-
-Para rodar o frontend (V1) basta usar um dos comandos na pasta '/frontend':
+Para rodar o frontend em React basta usar um dos comandos na pasta '/frontend':
 
 ```bash
 # instalar
