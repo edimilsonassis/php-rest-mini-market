@@ -162,4 +162,66 @@ class AppSeedTest extends TestCase
         }
     }
 
+    public function test_create_sale()
+    {
+        $data = [
+            "client" => "42109479892"
+        ];
+
+        $token = Auth::setLoggin(Users::getById(1))->jwt;
+
+        $client = new Client();
+
+        $response = $client->post('http://localhost:8080/api/sales', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $token
+            ],
+            'json'    => $data
+        ]);
+
+        $this->assertEquals(200, $response->getStatusCode());
+    }
+
+
+    public function test_create_sale_items()
+    {
+        $data = [
+            [
+                "id_product" => 1,
+                "qtde"       => rand(1, 10)
+            ],
+            [
+                "id_product" => 2,
+                "qtde"       => rand(1, 10)
+            ],
+            [
+                "id_product" => 3,
+                "qtde"       => rand(1, 10)
+            ],
+            [
+                "id_product" => 4,
+                "qtde"       => rand(1, 10)
+            ],
+            [
+                "id_product" => 5,
+                "qtde"       => rand(1, 10)
+            ],
+        ];
+
+        $token = Auth::setLoggin(Users::getById(1))->jwt;
+
+        foreach ($data as $item) {
+            $client = new Client();
+
+            $response = $client->post('http://localhost:8080/api/sales/1/items', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token
+                ],
+                'json'    => $item
+            ]);
+
+            $this->assertEquals(200, $response->getStatusCode());
+        }
+    }
+
 }

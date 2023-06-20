@@ -93,7 +93,7 @@ class Users extends Model
     /**
      * Update a user by ID
      * @access public
-     * @return bool
+     * @return int
      */
     public function update()
     {

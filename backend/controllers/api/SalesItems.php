@@ -26,18 +26,15 @@ class SalesItems
         $validatedData = $validator->validated();
 
         // Validate the product
-        if (!$product = \models\Products::getById($validatedData['id_product']))
+        if (!\models\Products::getById($validatedData['id_product']))
             throw new Exception('The product does not exist!', 400);
 
         $salesItens = new \models\SalesItems();
 
-        $salesItens->sls_ite_id_user     = Auth::user()->usr_id;
-        $salesItens->sls_ite_id_sale     = $id;
-        $salesItens->sls_ite_id_product  = $validatedData['id_product'];
-        $salesItens->sls_ite_qtd         = $validatedData['qtde'];
-        $salesItens->sls_ite_price       = $product->prd_price;
-        $salesItens->sls_ite_description = $product->prd_name;
-        $salesItens->sls_ite_tax         = $product->type->tpo_tax;
+        $salesItens->sls_ite_id_user    = Auth::user()->usr_id;
+        $salesItens->sls_ite_id_sale    = $id;
+        $salesItens->sls_ite_qtd        = $validatedData['qtde'];
+        $salesItens->sls_ite_id_product = $validatedData['id_product'];
 
         return $salesItens->store();
     }

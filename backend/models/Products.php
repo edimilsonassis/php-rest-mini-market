@@ -76,9 +76,6 @@ class Products extends Model
      */
     public function store()
     {
-        if (!$this->type = ProductsTypes::getByID($this->prd_id_type))
-            throw new Exception('The type does not exist!', 400);
-
         $data = [
             'prd_id_type' => $this->prd_id_type,
             'prd_id_user' => $this->prd_id_user,
@@ -96,13 +93,10 @@ class Products extends Model
     /**
      * Update a product by ID
      * @access public
-     * @return bool
+     * @return int
      */
     public function update()
     {
-        if (!$this->type = ProductsTypes::getByID($this->prd_id_type))
-            throw new Exception('The type does not exist!', 400);
-
         $data = [
             'prd_id'      => $this->prd_id,
             'prd_id_type' => $this->prd_id_type,

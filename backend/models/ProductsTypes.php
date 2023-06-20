@@ -73,7 +73,7 @@ class ProductsTypes extends Model
     /**
      * Update a type by ID
      * @access public
-     * @return bool
+     * @return int
      */
     public function update()
     {

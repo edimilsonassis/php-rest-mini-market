@@ -3,6 +3,7 @@
 namespace controllers\api;
 
 use http\Request;
+use http\Exception;
 use core\Validator;
 
 class Products
@@ -24,6 +25,9 @@ class Products
         $validator->field('id_type', 'Tipo do Produto')->isRequired()->numericMinMax(1);
 
         $validatedData = $validator->validated();
+
+        if (!ProductsTypes::getByID($validatedData['id_type']))
+            throw new Exception('The type does not exist!', 400);
 
         $product = \models\Products::getById($id);
 
@@ -52,6 +56,9 @@ class Products
         $validatedData = $validator->validated();
 
         $product = new \models\Products();
+
+        if (!ProductsTypes::getByID($validatedData['id_type']))
+            throw new Exception('The type does not exist!', 400);
 
         $product->prd_id_user = Auth::user()->usr_id;
         $product->prd_name    = $validatedData['name'];

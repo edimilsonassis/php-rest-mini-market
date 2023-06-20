@@ -93,7 +93,7 @@ class Sales extends Model
     /**
      * Register a new sale ID
      * @access public
-     * @return int
+     * @return int|bool
      */
     public static function genID()
     {
@@ -104,7 +104,7 @@ class Sales extends Model
         $stmt = $pdo->query($sql);
 
         if (!$result = $stmt->fetch(2))
-            throw new Exception('It was not possible to generate a new sale!', 500);
+            return false;
 
         return $result->nextval;
     }
