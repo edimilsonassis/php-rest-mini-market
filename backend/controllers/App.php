@@ -91,7 +91,7 @@ class App extends WithViews
         $user = $id == 'novo' ? null : \models\Users::getById(intval($id));
 
         $data = [
-            'pageTitle' => $user ? "$user->urs_name" : 'Novo Tipo',
+            'pageTitle' => $user ? "$user->urs_name" : 'Novo Usuario',
             'user'      => $user
         ];
 
