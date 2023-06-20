@@ -64,6 +64,7 @@ class Sales extends Model
     public static function list()
     {
         $result = self::query()
+            ->orderBy('"sls_id" DESC')
             ->select()
             ->fetchAll(\PDO::FETCH_CLASS, self::class);
 

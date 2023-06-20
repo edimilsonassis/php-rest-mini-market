@@ -20,7 +20,7 @@ class ProductsTypes
         $validator = new Validator($form);
 
         $validator->field('tax', 'Valor do Imposto')->isRequired()->money(0.001, null, 3);
-        $validator->field('description', 'Descricao do Tipo')->isRequired()->lengthMinMax(5, 15);
+        $validator->field('description', 'Descricao do Tipo')->isRequired()->lengthMinMax(1, 255);
 
         $validatedData = $validator->validated();
 

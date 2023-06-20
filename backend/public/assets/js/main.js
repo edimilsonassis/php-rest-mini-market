@@ -75,14 +75,17 @@ async function fetchJson(method, url, query, body) {
             body: JSON.stringify(body),
         });
 
+        response.data = await response.json();
+
         if (response.status === 401)
             throw window.location.href = '/login';
-
-        response.data = await response.json();
 
         return response;
     } catch (error) {
         console.error('Error:', error);
+
+        await error.text();
+
         throw error;
     }
 }

@@ -55,10 +55,10 @@ class Products extends Model
      * @access public
      * @return array<self>
      */
-    public static function list(int $limit = 20)
+    public static function list()
     {
         $result = self::query()
-            ->limit($limit)
+            ->orderBy('"prd_id" DESC')
             ->select()
             ->fetchAll(\PDO::FETCH_CLASS, self::class);
 

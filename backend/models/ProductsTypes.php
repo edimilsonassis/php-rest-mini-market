@@ -44,6 +44,7 @@ class ProductsTypes extends Model
     public static function list()
     {
         $result = self::query()
+            ->orderBy('"tpo_id" DESC')
             ->select()
             ->fetchAll(\PDO::FETCH_CLASS, self::class);
 
@@ -85,7 +86,7 @@ class ProductsTypes extends Model
         ];
 
         return self::query()
-            ->where('"prd_id" = :prd_id')
+            ->where('"tpo_id" = :tpo_id')
             ->bind($data)
             ->update()
             ->rowCount();

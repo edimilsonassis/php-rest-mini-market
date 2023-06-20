@@ -65,13 +65,37 @@ class App extends WithViews
         return self::view('products', $data);
     }
 
+    public static function type($id)
+    {
+        $type = $id == 'novo' ? null : \models\ProductsTypes::getById(intval($id));
+
+        $data = [
+            'pageTitle' => $type ? "$type->tpo_description" : 'Novo Tipo',
+            'type'      => $type
+        ];
+
+        return self::view('type', $data);
+    }
+
     public static function types()
     {
         $data = [
             'pageTitle' => 'Tipos',
         ];
 
-        return self::view('products.types', $data);
+        return self::view('types', $data);
+    }
+
+    public static function user($id)
+    {
+        $user = $id == 'novo' ? null : \models\Users::getById(intval($id));
+
+        $data = [
+            'pageTitle' => $user ? "$user->urs_name" : 'Novo Tipo',
+            'user'      => $user
+        ];
+
+        return self::view('user', $data);
     }
 
     public static function users()

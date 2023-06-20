@@ -14,22 +14,18 @@
 				<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 					<div class="flex-wrap pt-3 pb-2 mb-3 d-flex justify-content-between flex-md-nowrap align-items-center border-bottom">
 						<h3>
-							{{pageTitle}}
+							{{ pageTitle }}
 						</h3>
-						<div class="mb-2 btn-toolbar mb-md-0"></div>
+						<div class="mb-2 btn-toolbar mb-md-0">
+							<button id="btnSave" type="button" class="btn btn-primary">
+								Salvar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewbox="0 0 16 16">
+									<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+								</svg>
+							</button>
+						</div>
 					</div>
-					<div class="mt-3">
-						<h4>Usuários</h4>
-						{{ include('/tables/users.html.twig') }}
-					</div>
-					<div class="mt-3">
-						<h4>Tipos</h4>
-						{{ include('/tables/types.html.twig') }}
-					</div>
-					<div class="mt-3">
-						<h4>Produtos</h4>
-						{{ include('/tables/products.html.twig') }}
-					</div>
+					{{ include('/forms/type.html.twig') }}
 				</main>
 			</div>
 		</div>

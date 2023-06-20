@@ -64,6 +64,7 @@ class Users extends Model
     public static function list()
     {
         $result = self::query()
+            ->orderBy('"usr_id" DESC')
             ->select()
             ->fetchAll(\PDO::FETCH_CLASS, self::class);
 
@@ -98,6 +99,7 @@ class Users extends Model
     public function update()
     {
         $data = [
+            'usr_id'       => $this->usr_id,
             'urs_name'     => $this->urs_name,
             'urs_username' => $this->urs_username,
             'urs_password' => $this->urs_password,

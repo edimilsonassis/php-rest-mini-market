@@ -47,9 +47,21 @@ class MarketPages
             }
         ]);
 
+        $router->get('/tipos/{id}', [
+            function ($id) {
+                return new Response(200, App::type($id), Response::RPS_CT_HTML);
+            }
+        ]);
+
         $router->get('/tipos', [
             function () {
                 return new Response(200, App::types(), Response::RPS_CT_HTML);
+            }
+        ]);
+
+        $router->get('/usuarios/{id}', [
+            function ($id) {
+                return new Response(200, App::user($id), Response::RPS_CT_HTML);
             }
         ]);
 

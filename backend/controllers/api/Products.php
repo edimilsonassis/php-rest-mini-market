@@ -49,7 +49,7 @@ class Products
 
         $validator = new Validator($form);
 
-        $validator->field('name', 'Nome do Produto')->isRequired()->lengthMinMax(5, 255);
+        $validator->field('name', 'Nome do Produto')->isRequired()->lengthMinMax(1, 255);
         $validator->field('price', 'Valor do Produto')->isRequired()->money(0.001, null, 3);
         $validator->field('id_type', 'Tipo do Produto')->isRequired()->numericMinMax(1);
 

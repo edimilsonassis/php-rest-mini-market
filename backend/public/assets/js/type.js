@@ -1,17 +1,9 @@
 
-class Product {
+class Type {
 
     el = {
-        form: document.getElementById('form-product'),
+        form: document.getElementById('form-type'),
         btnSave: document.getElementById('btnSave'),
-    }
-
-    async getProduct() {
-        const response = await fetchGet('product')
-
-        console.log(response.data);
-
-        this.product = response.data
     }
 
     async init() {
@@ -31,11 +23,11 @@ class Product {
             const body = Object.fromEntries(formData.entries())
 
             if (body.id)
-                await fetchPut(`products/${body.id}`, body)
+                await fetchPut(`types/${body.id}`, body)
             else
-                await fetchPost(`products`, body)
+                await fetchPost(`types`, body)
 
-            location.href = '/produtos'
+            location.href = '/tipos'
         })
 
     }
@@ -46,5 +38,5 @@ class Product {
 }
 
 window.addEventListener('load', async () => {
-    app.product = new Product()
+    app.type = new Type()
 })

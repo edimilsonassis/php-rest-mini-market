@@ -20,21 +20,22 @@ class Users
 
         $validator = new Validator($form);
 
-        $validator->field('urs_name', 'Nome do Completo')->isRequired()->lengthMinMax(5, 255);
-        $validator->field('urs_username', 'Usuário')->isRequired()->lengthMinMax(3, 20);
-        $validator->field('urs_password', 'Senha')->isRequired()->lengthMinMax(6, 255);
+        $validator->field('name', 'Nome do Completo')->isRequired()->lengthMinMax(5, 255);
+        $validator->field('username', 'Usuário')->isRequired()->lengthMinMax(3, 20);
+        $validator->field('password', 'Senha')->isRequired()->lengthMinMax(6, 255);
 
         $validatedData = $validator->validated();
 
         $user = \models\Users::getById($id);
 
-        if ($user->getByUsername($validatedData['urs_username']) and $user->usr_id != $id) {
+        if ($user->getByUsername($validatedData['username']) and $user->usr_id != $id) {
             throw new Exception('User already exists');
         }
 
-        $user->urs_name     = $validatedData['urs_name'];
-        $user->urs_username = $validatedData['urs_username'];
-        $user->urs_password = $validatedData['urs_password'];
+        $user->usr_id       = $id;
+        $user->urs_name     = $validatedData['name'];
+        $user->urs_username = $validatedData['username'];
+        $user->urs_password = $validatedData['password'];
 
         return $user->update();
     }
@@ -49,21 +50,21 @@ class Users
 
         $validator = new Validator($form);
 
-        $validator->field('urs_name', 'Nome do Completo')->isRequired()->lengthMinMax(5, 255);
-        $validator->field('urs_username', 'Usuário')->isRequired()->lengthMinMax(3, 20);
-        $validator->field('urs_password', 'Senha')->isRequired()->lengthMinMax(6, 255);
+        $validator->field('name', 'Nome do Completo')->isRequired()->lengthMinMax(1, 255);
+        $validator->field('username', 'Usuário')->isRequired()->lengthMinMax(1, 20);
+        $validator->field('password', 'Senha')->isRequired()->lengthMinMax(1, 255);
 
         $validatedData = $validator->validated();
 
         $user = new \models\Users();
 
-        if ($user->getByUsername($validatedData['urs_username'])) {
+        if ($user->getByUsername($validatedData['username'])) {
             throw new Exception('User already exists');
         }
 
-        $user->urs_name     = $validatedData['urs_name'];
-        $user->urs_username = $validatedData['urs_username'];
-        $user->urs_password = $validatedData['urs_password'];
+        $user->urs_name     = $validatedData['name'];
+        $user->urs_username = $validatedData['username'];
+        $user->urs_password = $validatedData['password'];
 
         return $user->store();
     }

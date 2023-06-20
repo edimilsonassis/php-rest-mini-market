@@ -3,7 +3,7 @@
 		<div class="col-xl-6">
 			<form id="form-product">
 				<div class="row g-3">
-					<input type="text" class="d-none" name="id" placeholder="" value="{{ product.prd_id }}" required="">
+					<input type="text" class="d-none" name="id" placeholder="" value="{{ product.prd_id }}">
 
 					<div class="col-12">
 						<label for="description" class="form-label">Descrição</label>
@@ -14,7 +14,7 @@
 						<label for="price" class="form-label">Valor</label>
 						<div class="input-group has-validation">
 							<span class="input-group-text">R$</span>
-							<input type="text" class="form-control" name="price" placeholder="" value="{{ product.prd_price }}" required="">
+							<input type="number" step="any" class="form-control" name="price" placeholder="" value="{{ product.prd_price }}" required="">
 						</div>
 					</div>
 

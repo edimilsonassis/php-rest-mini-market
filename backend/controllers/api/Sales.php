@@ -17,7 +17,7 @@ class Sales
 
         $validator = new Validator($form);
 
-        $validator->field('client', 'CPF do Cliente')->lengthMinMax(5, 20);
+        $validator->field('client', 'CPF do Cliente')->lengthMinMax(1, 20);
 
         $validatedData = $validator->validated();
 

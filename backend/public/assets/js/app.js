@@ -22,7 +22,9 @@ class Auth {
     }
 
     async checkAuth() {
-        if (!await this.getMe()) {
+        const user = await this.getMe()
+
+        if (!user) {
             if (location.pathname != '/login') {
                 return window.location.href = '/login';
             }
@@ -31,6 +33,10 @@ class Auth {
                 return window.location.href = '/';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('[data-key="urs_name"]').textContent = user.urs_name;
+        })
     }
 }
 

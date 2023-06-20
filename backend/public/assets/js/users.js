@@ -25,7 +25,10 @@ class Users {
         this.sales.forEach(data => {
             const row = this.el.table.row.cloneNode(true)
 
-            row.querySelectorAll(`[data-key]`).forEach(el => el.fillDisplay(data))
+            row.querySelectorAll(`[data-key]`).forEach(el => {
+                el.setAttribute('href', `/usuarios/${data.usr_id}`)
+                el.fillDisplay(data)
+            })
 
             this.el.table.body.append(row)
         });
