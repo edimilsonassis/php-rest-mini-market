@@ -39,21 +39,25 @@
 										<span data-key="sls_ite_description" data-placeholder="Checkout" class="text-primary">Checkout</span>
 									</h4>
 									<ul class="mb-3 list-group">
-										<li class="list-group-item d-flex justify-content-between lh-sm">
-											<h5 class="my-0">Qtd.</h5>
+										<li title="Quantidade" class="list-group-item d-flex justify-content-between lh-sm">
+											<h6 class="my-0">Qtd.</h6>
 											<strong data-key="sls_ite_qtd"></strong>
 										</li>
-										<li class="list-group-item d-flex justify-content-between lh-sm">
-											<h5 class="my-0">Und.</h5>
+										<li title="Valor Unitário Imposto" class="list-group-item d-flex justify-content-between lh-sm">
+											<h6 class="my-0">Imp.</h6>
+											<strong data-key="sls_ite_tax" data-format="money"></strong>
+										</li>
+										<li title="Valor Unitário" class="list-group-item d-flex justify-content-between lh-sm">
+											<h6 class="my-0">Und.</h6>
 											<strong data-key="sls_ite_price" data-format="money"></strong>
 										</li>
-										<li class="list-group-item d-flex justify-content-between lh-sm">
-											<h5 class="my-0">Imp.</h5>
+										<li title="Valor Total Imposto" class="list-group-item d-flex justify-content-between lh-sm">
+											<h6 class="my-0">Total Imp.</h6>
 											<strong data-key="sls_ite_tax_total" data-format="money"></strong>
 										</li>
-										<li class="list-group-item d-flex justify-content-between lh-sm">
-											<h5 class="my-0">Subtotal</h5>
-											<strong data-key="sls_ite_price_total" data-format="money"></strong>
+										<li class="list-group-item d-flex justify-content-between lh-sm text-primary">
+											<h4 class="my-0">Total Item</h4>
+											<h4 data-key="sls_ite_price_total" data-format="money" class="my-0"></h4>
 										</li>
 									</ul>
 								</div>
@@ -71,7 +75,7 @@
 											<h6 class="my-0">Impostos</h6>
 											<h6 data-key="sale.sls_total_price_taxes" data-format="money" data-placeholder="0" class="my-0">R$ 0</h6>
 										</li>
-										<li class="list-group-item d-flex justify-content-between">
+										<li class="list-group-item d-flex justify-content-between text-success">
 											<h3 class="my-0">Total</h3>
 											<h3 data-key="sale.sls_total_price" data-format="money" data-placeholder="0" class="my-0">R$ 0</h3>
 										</li>
@@ -112,8 +116,8 @@
 													<th scope="col">#</th>
 													<th scope="col">Nome</th>
 													<th scope="col" class="text-end">Qtd.</th>
-													<th scope="col" class="text-end">Taxas</th>
-													<th scope="col" class="text-end">Total</th>
+													<th scope="col" class="text-end">V. Und.</th>
+													<th scope="col" class="text-end">V. Total</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -121,7 +125,7 @@
 													<td data-key="sls_ite_id_product">#</td>
 													<td data-key="sls_ite_description"></td>
 													<td class="text-end" data-key="sls_ite_qtd"></td>
-													<td class="text-end" data-format="money" data-key="sls_ite_tax_total"></td>
+													<td class="text-end" data-format="money" data-key="sls_ite_price"></td>
 													<td class="text-end" data-format="money" data-key="sls_ite_price_total"></td>
 												</tr>
 											</tbody>

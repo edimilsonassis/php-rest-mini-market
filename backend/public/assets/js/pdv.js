@@ -90,7 +90,7 @@ class PDV {
         })
 
         this.el.checkout.querySelectorAll(`[data-key]`).forEach(el => {
-            el.fillDisplay(this.data.sale.items[this.data.sale.items.length - 1])
+            el.fillDisplay(this.data.sale.items[0])
         })
     }
 
