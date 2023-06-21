@@ -1,16 +1,17 @@
-<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-	<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">
-		{{ appName}}
-	</a>
+<header class="p-0 shadow navbar sticky-top bg-dark flex-md-nowrap" data-bs-theme="dark">
 
-	<ul class="navbar-nav flex-row d-md-none">
+	<ul class="flex-row navbar-nav d-md-none">
 		<li class="nav-item text-nowrap">
-			<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-				<svg class="bi">
+			<button class="px-3 text-white nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<svg class="bi" style="width: 1.5rem; height: 1.5rem;">
 					<use xlink:href="#list"/>
 				</svg>
 			</button>
 		</li>
 	</ul>
+
+	<a class="px-3 text-white navbar-brand col-md-3 col-lg-2 me-0 fs-6" href="/">
+		{{ appName}}
+	</a>
 
 </header>

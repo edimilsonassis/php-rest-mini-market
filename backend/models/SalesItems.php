@@ -40,7 +40,7 @@ class SalesItems extends Model
 
         $result = self::query()
             ->where('"sls_ite_id_sale" = :sls_ite_id_sale')
-            ->orderBy('"sls_ite_id" desc')
+            // ->orderBy('"sls_ite_id" desc')
             ->bind($data)
             ->select()
             ->fetchAll(\PDO::FETCH_CLASS, self::class);

@@ -12,8 +12,10 @@ class PDV {
         resume: document.getElementById('resume'),
         table: {
             pdv: document.getElementById('table-items'),
+            table: document.querySelector('#table-items'),
             body: document.querySelector('#table-items tbody'),
-            row: document.querySelector('#table-items tbody tr'),
+            item: document.querySelector('#table-items tbody tr[for="item"]'),
+            empty: document.querySelector('#table-items tbody tr[for="empty"]'),
         }
     }
 
@@ -67,10 +69,19 @@ class PDV {
 
         this.el.table.body.innerHTML = ''
 
-        this.data.sale.items.forEach(data => {
-            const row = this.el.table.row.cloneNode(true)
+        if (!this.data.sale.items.length) {
+            this.el.table.table.classList.remove('table-striped', 'table-hover')
+            return this.el.table.body.append(this.el.table.empty.cloneNode(true))
+        }
 
-            row.querySelectorAll(`[data-key]`).forEach(el => el.fillDisplay(data))
+        this.el.table.table.classList.add('table-striped')
+
+        this.data.sale.items.reverse().forEach((data, index) => {
+            const row = this.el.table.item.cloneNode(true)
+
+            row.querySelectorAll('[data-key]').forEach(el => el.fillDisplay(data))
+
+            row.querySelector('[data-key="index"]').textContent = this.data.sale.items.length - (index)
 
             this.el.table.body.append(row)
         });

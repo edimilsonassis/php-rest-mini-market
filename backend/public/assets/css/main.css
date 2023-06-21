@@ -1,3 +1,33 @@
+.table-responsive {
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 0px !important;
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+
+.table-responsive table {
+  margin-bottom: 0px !important;
+}
+
+.table>:not(caption)>*>* {
+  border-bottom-width: 0 !important;
+}
+
+.table-responsive th:first-child {
+  padding-left: 0.5rem !important;
+}
+
+.table-responsive td:first-child {
+  padding-left: 0.5rem !important;
+}
+
+.table-responsive th:last-child {
+  padding-right: 0.5rem !important;
+}
+
+.table-responsive td:last-child {
+  padding-right: 0.5rem !important;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
