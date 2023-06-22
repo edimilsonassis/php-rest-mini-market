@@ -149,19 +149,6 @@ class Router
 
         $request_method = $this->request->method();
 
-        header('content-type: application/json');
-        echo print_r(
-            [
-                'a'       => $this->request->uri(),
-                'b'       => rtrim($this->request->uri(), '/'),
-                'uri'     => $uri,
-                'request' => $this->request,
-                'router'  => $this
-            ],
-            true
-        );
-        exit;
-
         foreach ($this->routes as $pattern => $methods) {
 
             if (preg_match($pattern, $uri, $matches))
