@@ -11,7 +11,7 @@ class MarketServices
     {
         $router = \http\Router::getInstance($url);
 
-        $router->get('', [
+        $router->get('/', [
             function () {
                 return new Response(401, 'Inform a request');
             }
