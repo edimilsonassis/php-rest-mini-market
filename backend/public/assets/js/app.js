@@ -28,15 +28,18 @@ class Auth {
             if (location.pathname != '/login') {
                 return window.location.href = '/login';
             }
-        } else {
-            if (location.pathname == '/login') {
-                return window.location.href = '/';
-            }
+            return false
+        }
+
+        if (location.pathname == '/login') {
+            return window.location.href = '/';
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('[data-key="urs_name"]').textContent = user.urs_name;
         })
+
+        return true
     }
 }
 
