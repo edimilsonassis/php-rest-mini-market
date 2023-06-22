@@ -154,7 +154,6 @@ class Router
             [
                 'a'       => $this->request->uri(),
                 'b'       => rtrim($this->request->uri(), '/'),
-                'c'       => explode($this->prefix, $uri),
                 'uri'     => $uri,
                 'request' => $this->request,
                 'router'  => $this
