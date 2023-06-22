@@ -20,6 +20,4 @@ Queue::setMap([
 // Default router for API route prefix 
 $url = $_SERVER['HTTP_HOST'] ?? '';
 
-echo "aaaaaaa $url";
-
 new \routers\MarketServices("$url/api/");
