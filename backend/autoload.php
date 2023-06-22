@@ -1,6 +1,5 @@
 <?php
 
-use http\Exception;
 use Symfony\Component\Dotenv\Dotenv;
 
 require_once 'vendor/autoload.php';
@@ -20,5 +19,5 @@ spl_autoload_register(function ($classe) {
     if (file_exists($file) && !is_dir($file))
         require_once $file;
     else
-        throw new Exception('Error when opening class ' . $classe, 1);
+        throw new \Exception('Error when opening class ' . $classe, 1);
 });
