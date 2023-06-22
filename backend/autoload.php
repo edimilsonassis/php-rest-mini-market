@@ -16,8 +16,8 @@ $dotenv->load(__env . '/.env');
 spl_autoload_register(function ($classe) {
     $file = __env . $classe . '.php';
 
-    if (file_exists($file) && !is_dir($file))
+    // if (file_exists($file) && !is_dir($file))
         require_once $file;
-    else
-        throw new \Exception('Error when opening class ' . $file, 1);
+    // else
+        // throw new \Exception('Error when opening class ' . $file, 1);
 });
