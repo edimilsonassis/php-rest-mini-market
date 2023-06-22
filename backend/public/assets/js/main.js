@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080/api';
+const baseUrl = `${location.origin}/api`
 
 function toQueryString(query) {
     return Object.keys(query)
