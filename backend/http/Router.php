@@ -170,7 +170,7 @@ class Router
                 }
         }
 
-        throw new Exception("Sorry, we couldn't find the route'$request_method::$uri'.", 404);
+        throw new Exception("Sorry, we couldn't find the route '$request_method::$uri'.", 404);
     }
 
     /**
