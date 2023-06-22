@@ -10,6 +10,7 @@ class MarketServices
     function __construct(string $url)
     {
         $router = \http\Router::getInstance($url);
+        $router->setPrefix('/api/');
 
         $router->get('/', [
             function () {

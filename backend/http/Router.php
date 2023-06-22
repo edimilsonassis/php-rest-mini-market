@@ -58,7 +58,6 @@ class Router
     {
         $this->request = new Request;
         $this->url     = $url;
-        $this->setPrefix();
 
         self::$instance = $this;
     }
@@ -66,10 +65,9 @@ class Router
     /**
      * Set the current prefix route
      */
-    private function setPrefix()
+    public function setPrefix(string $prefix)
     {
-        $parse_url    = parse_url($this->url);
-        $this->prefix = $parse_url['path'] ?? '';
+        $this->prefix = $prefix;
     }
 
     /**
