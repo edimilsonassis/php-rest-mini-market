@@ -23,25 +23,74 @@
 		<link href="/assets/css/sign-in.css" rel="stylesheet">
 	</head>
 
-	<body class="d-flex align-items-center py-4 bg-body-tertiary">
+	<body class="py-4 d-flex align-items-center bg-body-tertiary">
 		{{ include('/common/common.html.twig') }}
 
-		<main class="form-signin w-100 m-auto text-center">
-			<form id="login">
-				<img class=" mb-4" src=" /assets/brand/bootstrap-logo.svg" alt=" Logo" width=" 72" height=" 57">
-				<h1 class="h3 mb-5 fw-normal">Acesso ao Sistema</h1>
+		<div class="bottom-0 mb-3 dropdown position-fixed end-0 me-3 bd-mode-toggle">
+			<button class="py-2 btn btn-outline-secondary dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Alterar Tema (dark)">
+				<svg class="my-1 bi theme-icon-active" width="1em" height="1em">
+					<use href="#moon-stars-fill"></use>
+				</svg>
+				<span class="visually-hidden" id="bd-theme-text">Alterar Tema</span>
+			</button>
+			<ul class="shadow dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+				<li>
+					<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+						<svg class="opacity-50 bi me-2 theme-icon" width="1em" height="1em">
+							<use href="#sun-fill"></use>
+						</svg>
+						Claro
+						<svg class="bi ms-auto d-none" width="1em" height="1em">
+							<use href="#check2"></use>
+						</svg>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark" aria-pressed="true">
+						<svg class="opacity-50 bi me-2 theme-icon" width="1em" height="1em">
+							<use href="#moon-stars-fill"></use>
+						</svg>
+						Escuro
+						<svg class="bi ms-auto d-none" width="1em" height="1em">
+							<use href="#check2"></use>
+						</svg>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+						<svg class="opacity-50 bi me-2 theme-icon" width="1em" height="1em">
+							<use href="#circle-half"></use>
+						</svg>
+						Auto
+						<svg class="bi ms-auto d-none" width="1em" height="1em">
+							<use href="#check2"></use>
+						</svg>
+					</button>
+				</li>
+			</ul>
+		</div>
 
-				<div class="form-floating mb-1">
+		<main class="m-auto text-center form-signin w-100">
+			<form id="login">
+				<img class="mb-4 " src=" /assets/brand/bootstrap-logo.svg" alt=" Logo" width=" 72" height=" 57">
+				<h1 class="mb-5 h3 fw-normal">Acesso ao Sistema</h1>
+
+				<div class="mb-1 text-start form-floating">
 					<input type="text" maxlength="20" class="form-control" value="" name="username" id="floatingInput" placeholder="fulano">
 					<label for="floatingInput">Usuário</label>
+					<div class="invalid-feedback"></div>
 				</div>
-				<div class="form-floating">
+				<div class="text-start form-floating">
 					<input type="password" maxlength="20" class="form-control" value="" name="password" id="floatingPassword" placeholder="******">
 					<label for="floatingPassword">Senha</label>
+					<div class="invalid-feedback"></div>
 				</div>
 
-				<div class="form-check text-start my-3"></div>
-				<button class="btn btn-primary w-100 py-2" type="submit">Entrar</button>
+				<div class="my-3 form-check text-start"></div>
+				<button class="py-2 btn btn-primary w-100" type="submit">
+					<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+					Entrar
+				</button>
 				<p class="mt-5 mb-3 text-body-secondary">&copy;
 					{{ appName }}
 				</p>

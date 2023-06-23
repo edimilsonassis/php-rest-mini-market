@@ -2,11 +2,13 @@
 
 namespace core;
 
+use core\validator\FieldErrors;
+
 class Validator
 {
     protected $data;
     protected $data_validada = [];
-    protected $errors = [];
+    protected ?FieldErrors $errors;
     protected $messages = [];
     protected $prefix;
     protected $sufix;
@@ -20,6 +22,7 @@ class Validator
      */
     public function __construct(array $data)
     {
+        $this->errors = new FieldErrors();
         $this->setData($data);
         $this->setMessages();
     }
@@ -38,15 +41,7 @@ class Validator
         if ($error != true)
             return $errors;
 
-        $responde = new \http\Response(
-            400,
-            [
-                'message' => 'Some information needs attention!',
-                'errors'  => $errors
-            ]
-        );
-
-        $responde->display();
+        $this->errors->toResponse();
     }
 
     /**
@@ -98,21 +93,19 @@ class Validator
     public function getErrors(string $key_name = null)
     {
         if ($key_name)
-            return isset($this->errors[$this->prefix . $key_name . $this->sufix])
-                ? $this->errors[$this->prefix . $key_name . $this->sufix]
-                : null;
+            return $this->errors->getErrors($this->prefix . $key_name . $this->sufix);
 
-        return $this->errors;
+        return $this->errors->getErrors();
     }
 
     /**
-     * VALIDE OS DADOS
+     * Return if the data is valid
      * @access public
      * @return bool
      */
     public function isValid()
     {
-        return count($this->errors) == 0;
+        return !$this->errors->hasErrors();
     }
 
     /**
@@ -128,10 +121,10 @@ class Validator
     }
 
     /**
-     * VERIFIQUE SE O VALOR ATUAL É MENOR OU MAIOR QUE O PARÂMETRO
+     * Define the minimum and maximum length of the field
      * @access public
-     * @param float $min comprimento mínimo
-     * @param float $max comprimento máximo
+     * @param float $min  
+     * @param float $max  
      * @return self
      */
     public function numericMinMax(
@@ -183,10 +176,10 @@ class Validator
     }
 
     /**
-     * VERIFIQUE SE O COMPRIMENTO DO VALOR ATUAL É MENOR OU MAIOR QUE O PARÂMETRO
+     * Check that the current value length is lower or larger than the parameter
      * @access public
-     * @param int $min comprimento mínimo
-     * @param int $max comprimento máximo
+     * @param int $min  
+     * @param int $max  
      * @return self
      */
     public function lengthMinMax(int $min = null, int $max = null)
@@ -195,16 +188,16 @@ class Validator
             return $this;
 
         if ($min and $strlen < $min)
-            $this->addError('minLength', "'$min' caracteres. Atualmente tem '$strlen'");
+            $this->addError('minLength', "'$min' characters. Currently has '$strlen'");
 
         if ($max and $strlen > $max)
-            $this->addError('maxLength', "'$max' caracteres. Atualmente tem '$strlen'");
+            $this->addError('maxLength', "'$max' characters. Currently has '$strlen'");
 
         return $this;
     }
 
     /**
-     * RETORNA O VALOR DENTRO DA CHAVE QUE ESTA ATUALMENTE SENDO VERIFICADA
+     * Returns the value current value
      * @access protected
      * @return mixed
      */
@@ -216,7 +209,7 @@ class Validator
     }
 
     /**
-     * DEFINE UM NOVO VALOR PARA O FIELD ATUAL
+     * Set the current value
      * @access protected
      * @return bool
      */
@@ -226,7 +219,7 @@ class Validator
     }
 
     /**
-     * RETORNA OS DADOS DO VALIDADOR
+     * Returns the data without validation
      * @access public
      * @return mixed
      */
@@ -236,31 +229,23 @@ class Validator
     }
 
     /**
-     * ADICIONA UM STRING AO ARRAY DE ERROS
+     * Add an error message
      * @access protected
-     * @param string $error The error message
+     * @param string $error_type error type message
+     * @param array $args arguments to be used in the message
      * @return object|string
      */
     protected function addError($error_type, ...$args)
     {
+        $field = $this->prefix . $this->current_key . $this->sufix;
+
         $name = [$this->current_description] ?: $this->current_key;
 
         $error = sprintf($this->messages[$error_type], ...$args);
 
-        $field = $this->prefix . $this->current_key . $this->sufix;
+        $this->errors->addError($field, $name, $error);
 
-        $extant = array_search($field, array_column($this->errors, 'field'));
-
-        if ($extant > -1)
-            return $this->errors[$extant]->errors[] = $error;
-
-        return $this->errors[] = (object) [
-            'field'  => $field,
-            'name'   => $name,
-            'errors' => [
-                $error
-            ]
-        ];
+        return $this;
     }
 
     /**

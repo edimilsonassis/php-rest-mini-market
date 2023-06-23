@@ -18,12 +18,14 @@
 						</h3>
 						<div class="mb-2 btn-toolbar mb-md-0 ">
 							<button type="button" id="newSale" class="btn btn-primary ms-2">
+								<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill me-1" viewbox="0 0 16 16">
 									<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
 								</svg>
 								Nova
 							</button>
 							<button type="button" id="closeSale" class="btn btn-success ms-2 d-none">
+								<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check-fill me-1" viewbox="0 0 16 16">
 									<path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
 								</svg>
@@ -47,9 +49,12 @@
 										<div class="input-group">
 											<input type="text" class="form-control" name="id_product" placeholder="" value="" required="">
 											<button type="submit" class="btn btn-primary">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill me-1" viewbox="0 0 16 16">
-													<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
-												</svg>
+												<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+												<span role="status-hidden">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill me-1" viewbox="0 0 16 16">
+														<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+													</svg>
+												</span>
 											</button>
 										</div>
 									</div>
@@ -58,36 +63,38 @@
 
 								<div class="my-4"></div>
 
-								<div class="mb-5 border rounded-2 table-responsive">
-									<table id="table-items" class="table mb-0 table-borderless table-hover table-sm table-striped">
-										<thead>
-											<tr>
-												<th class="ps-3" scope="col">#</th>
-												<th scope="col">Nome</th>
-												<th scope="col" class="text-end">Qtd.</th>
-												<th scope="col" class="text-end">V. Und.</th>
-												<th class="pe-3 text-end" scope="col">V. Total</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr for="item">
-												<td class="ps-3" data-key="index">#</td>
-												<td data-key="sls_ite_description"></td>
-												<td class="text-end" data-key="sls_ite_qtd"></td>
-												<td class="text-end" data-format="money" data-key="sls_ite_price"></td>
-												<td class="pe-3 text-end" data-format="money" data-key="sls_ite_price_total"></td>
-											</tr>
-											<tr for="empty">
-												<td colspan="5" class="py-4 text-center text-muted">Sem Items</td>
-											</tr>
-										</tbody>
-									</table>
+								<div class="mb-4">
+									<div class="border rounded-2 table-responsive">
+										<table id="table-items" class="table mb-0 table-borderless table-hover table-sm table-striped">
+											<thead>
+												<tr>
+													<th class="ps-3" scope="col">#</th>
+													<th scope="col">Nome</th>
+													<th scope="col" class="text-end">Qtd.</th>
+													<th scope="col" class="text-end">V. Und.</th>
+													<th class="pe-3 text-end" scope="col">V. Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr for="item">
+													<td class="ps-3" data-key="index">#</td>
+													<td data-key="sls_ite_description"></td>
+													<td class="text-end" data-key="sls_ite_qtd"></td>
+													<td class="text-end" data-format="money" data-key="sls_ite_price"></td>
+													<td class="pe-3 text-end" data-format="money" data-key="sls_ite_price_total"></td>
+												</tr>
+												<tr for="empty">
+													<td colspan="5" class="py-4 text-center text-muted">Sem Items</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
 
 							</form>
 						</div>
 						<div class="col-md-5 col-lg-4 order-md-last">
-							<div id="checkout" class="mb-5">
+							<div id="checkout" class="mb-4">
 								<h4 class="mb-3 text-sm-end text-nowrap text-truncate">
 									<span data-key="sls_ite_description" data-placeholder="Checkout" class="text-primary">Checkout</span>
 								</h4>
@@ -115,7 +122,7 @@
 								</ul>
 							</div>
 
-							<div id="resume" class="mb-5">
+							<div id="resume" class="mb-4">
 								<h4 class="mb-3 d-flex justify-content-sm-end align-items-center">
 									<span data-key="sale.sls_client" title="Cliente" data-placeholder="#" class="badge bg-primary rounded-pill">#</span>
 								</h4>

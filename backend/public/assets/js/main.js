@@ -24,7 +24,44 @@ function accessNestedProperty(obj, propertyString) {
     return value;
 }
 
-Node.prototype.fillDisplay = function (data) {
+HTMLButtonElement.prototype.loading = function (isLoading) {
+    const status = this.querySelector('[role="status"]')
+    const statusHidden = this.querySelector('[role="status-hidden"]')
+
+    if (isLoading === true) {
+        this.disabled = true
+        status && status.classList.remove('d-none')
+        statusHidden && statusHidden.classList.add('d-none')
+    }
+
+    if (isLoading === false) {
+        this.disabled = false
+        status && status.classList.add('d-none')
+        statusHidden && statusHidden.classList.remove('d-none')
+    }
+
+    return this.disabled
+
+}
+
+HTMLFormElement.prototype.displayFieldError = function (errors) {
+    errors.forEach(element => {
+        const el = document.querySelector('[name="' + element.field + '"]')
+
+        if (!el)
+            return
+
+        const invalidFeedback = el.parentNode.querySelector('.invalid-feedback')
+
+        if (invalidFeedback) {
+            invalidFeedback.textContent = element.errors.toLocaleString()
+        }
+
+        el.classList.add('is-invalid')
+    });
+}
+
+HTMLElement.prototype.fillDisplay = function (data) {
     const placeholder = this.getAttribute('data-placeholder')
     const format = this.getAttribute('data-format')
     const key = this.getAttribute('data-key')
@@ -33,11 +70,11 @@ Node.prototype.fillDisplay = function (data) {
 
     switch (format) {
         case 'money':
-            this.textContent = value && parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            this.textContent = value != null && parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
             break;
 
         case 'datatime':
-            this.textContent = value && new Date(value).toLocaleString(
+            this.textContent = value != null && new Date(value).toLocaleString(
                 'pt-BR',
                 {
                     year: 'numeric',

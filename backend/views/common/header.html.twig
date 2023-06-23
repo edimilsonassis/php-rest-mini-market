@@ -2,7 +2,7 @@
 
 	<ul class="flex-row navbar-nav d-md-none">
 		<li class="nav-item text-nowrap">
-			<button class="px-3 text-white nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="px-2 text-white nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 				<svg class="bi" style="width: 1.5rem; height: 1.5rem;">
 					<use xlink:href="#list"/>
 				</svg>
@@ -13,5 +13,49 @@
 	<a class="px-3 text-white navbar-brand col-md-3 col-lg-2 me-0 fs-6" href="/">
 		{{ appName}}
 	</a>
+
+	<div class="me-1 bd-mode-toggle">
+		<button class="px-2 text-white nav-link dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+			<svg class="my-1 bi theme-icon-active" width="1em" height="1em">
+				<use href="#circle-half"></use>
+			</svg>
+			<span class="visually-hidden" id="bd-theme-text">Alterar Tema</span>
+		</button>
+		<ul class="shadow dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+			<li>
+				<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+					<svg class="opacity-50 bi me-2 theme-icon" width="1em" height="1em">
+						<use href="#sun-fill"></use>
+					</svg>
+					Claro
+					<svg class="bi ms-auto d-none" width="1em" height="1em">
+						<use href="#check2"></use>
+					</svg>
+				</button>
+			</li>
+			<li>
+				<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+					<svg class="opacity-50 bi me-2 theme-icon" width="1em" height="1em">
+						<use href="#moon-stars-fill"></use>
+					</svg>
+					Escuro
+					<svg class="bi ms-auto d-none" width="1em" height="1em">
+						<use href="#check2"></use>
+					</svg>
+				</button>
+			</li>
+			<li>
+				<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+					<svg class="opacity-50 bi me-2 theme-icon" width="1em" height="1em">
+						<use href="#circle-half"></use>
+					</svg>
+					Auto
+					<svg class="bi ms-auto d-none" width="1em" height="1em">
+						<use href="#check2"></use>
+					</svg>
+				</button>
+			</li>
+		</ul>
+	</div>
 
 </header>

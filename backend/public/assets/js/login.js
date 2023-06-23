@@ -1,5 +1,6 @@
 window.onload = async () => {
     const form = document.getElementById('login');
+    const btnSubmit = document.querySelector('[type="submit"]');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -12,6 +13,8 @@ window.onload = async () => {
         document.querySelectorAll('.is-invalid').forEach(element => {
             element.classList.remove('is-invalid')
         });
+
+        btnSubmit.loading(true)
 
         try {
             const url = `${baseUrl}/auth/login`;
@@ -41,21 +44,11 @@ window.onload = async () => {
 
             switch (err.status) {
                 case 400:
-                    err.data && err.data.errors && err.data.errors.forEach(element => {
-                        document.querySelector('[name="' + element.field + '"]').classList.add('is-invalid')
-                    });
-                    break;
-
-                case 401:
-                    if (err.data && err.data.message == "Invalid password")
-                        document.querySelector('[name="password"]').classList.add('is-invalid')
-                    else
-                        document.querySelector('[name="username"]').classList.add('is-invalid')
+                    form.displayFieldError(err.data.errors)
                     break;
 
                 default:
                     Swal.fire({
-                        title: 'Ocorreu um erro',
                         text: (err.data && err.data.message) ?? err.message,
                         icon: 'warning',
                         confirmButtonText: 'Ok'
@@ -64,5 +57,8 @@ window.onload = async () => {
             }
 
         }
+
+        btnSubmit.loading(false)
+
     })
 }

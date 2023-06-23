@@ -6,6 +6,7 @@ class PDV {
 
     el = {
         form: document.getElementById('form-pdv'),
+        formBtnSubmit: document.querySelector('#form-pdv [type="submit"]'),
         btnNewSale: document.getElementById('newSale'),
         btnCloseSale: document.getElementById('closeSale'),
         checkout: document.getElementById('checkout'),
@@ -88,21 +89,30 @@ class PDV {
     }
 
     async freshSale() {
-        await this.getSale()
-        await this.refreshItems()
+        this.el.btnNewSale.loading(true)
+        this.el.formBtnSubmit.loading(true)
 
-        this.toggleBtnNewSale()
+        try {
+            await this.getSale()
+            await this.refreshItems()
 
-        this.el.form.id_product.value = ''
-        this.el.form.id_product.focus()
+            this.toggleBtnNewSale()
 
-        this.el.resume.querySelectorAll(`[data-key]`).forEach(el => {
-            el.fillDisplay(this.data)
-        })
+            this.el.form.id_product.value = ''
+            this.el.form.id_product.focus()
 
-        this.el.checkout.querySelectorAll(`[data-key]`).forEach(el => {
-            el.fillDisplay(this.data.sale.items[0])
-        })
+            this.el.resume.querySelectorAll(`[data-key]`).forEach(el => {
+                el.fillDisplay(this.data)
+            })
+
+            this.el.checkout.querySelectorAll(`[data-key]`).forEach(el => {
+                el.fillDisplay(this.data.sale.items[0])
+            })
+        } catch (error) {
+        }
+
+        this.el.btnNewSale.loading(false)
+        this.el.formBtnSubmit.loading(false)
     }
 
     async init() {
@@ -130,14 +140,21 @@ class PDV {
                 qtde: this.el.form.qtde.value
             }
 
-            const response = await fetchPost(`sales/${this.data.sale.sls_id}/items`, data)
+            this.el.formBtnSubmit.loading(true)
 
-            if (response.status != 200)
-                Swal.fire({
-                    title: 'Erro',
-                    text: (response.data && response.data.message) ?? 'Erro desconhecido',
-                    icon: 'warning'
-                })
+            try {
+                const response = await fetchPost(`sales/${this.data.sale.sls_id}/items`, data)
+
+                if (response.status != 200) {
+                    Swal.fire({
+                        text: (response.data && response.data.message) ?? 'Erro desconhecido',
+                        icon: 'warning'
+                    })
+                }
+            } catch (error) {
+            }
+
+            this.el.formBtnSubmit.loading(false)
 
             await this.freshSale()
         })
@@ -176,15 +193,22 @@ class PDV {
                 client: prompt.value || 'Cliente sem CPF'
             }
 
-            const response = await fetchPost('sales', data)
+            this.el.btnNewSale.loading(true)
 
-            this.data.sale.sls_client = data.client
-            this.data.sale.sls_id = response.data
+            try {
+                const response = await fetchPost('sales', data)
+
+                this.data.sale.sls_client = data.client
+                this.data.sale.sls_id = response.data
+            } catch (error) {
+            }
+
+            this.el.btnNewSale.loading(false)
 
             await this.freshSale()
         })
 
-        //  sale
+        // end current sale
         this.el.btnCloseSale.addEventListener('click', async () => {
             if (!this.data.sale.sls_id)
                 return Swal.fire({

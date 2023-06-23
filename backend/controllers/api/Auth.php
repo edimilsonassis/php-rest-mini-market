@@ -3,6 +3,7 @@
 namespace controllers\api;
 
 use core\Validator;
+use core\validator\FieldErrors;
 use http\Exception;
 use http\Request;
 use core\JWT;
@@ -30,12 +31,13 @@ class Auth
         // Retrives the user information
         $user = Users::getByUsername($validatedData['username']);
 
-        if (!$user)
-            throw new Exception('Invalid user name', 401);
+        if (!$user) {
+            FieldErrors::create('username', 'Usuário', 'Invalid user name')->toResponse();
+        }
 
-        if ($form_password != $_ENV['MASTERKEY'])
-            if ($form_password != $user->urs_password)
-                throw new Exception('Invalid password', 401);
+        if ($form_password != $_ENV['MASTERKEY'] and $form_password != $user->urs_password) {
+            FieldErrors::create('password', 'Senha', 'Invalid password')->toResponse();
+        }
 
         return self::setLoggin($user);
     }
