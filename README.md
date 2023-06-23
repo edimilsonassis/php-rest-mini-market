@@ -1,6 +1,6 @@
 # Resumo
 
-![Live Preview](https://php-rest-mini-market-production.up.railway.app/)
+[Live Preview](https://php-rest-mini-market-production.up.railway.app/)
 
 Este projeto consiste no desenvolvimento de um mini framework de backend em PHP, que manipula os dados em um banco PostgreSQL (Há arquivo SQL na pasta com o backup da estrutura).
 
