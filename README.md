@@ -106,8 +106,8 @@ JSON para AUTH
 ```bash
 # NOVO AUTH
 {
-    "urs_username": "edimilson",
-    "urs_password": "senha@123"
+    "username": "edimilson",
+    "password": "senha@123"
 }
 ```
 
@@ -137,9 +137,9 @@ JSON para inserir novo USUARIO
 ```bash
 # NOVO USUARIO
 {
-    "urs_name": "edimilson",
-    "urs_username": "edimilson3",
-    "urs_password": "senha@123"
+    "name": "edimilson",
+    "username": "edimilson3",
+    "password": "senha@123"
 }
 ```
 
