@@ -1,7 +1,5 @@
 # Resumo
 
-[Live Preview](https://php-rest-mini-market-production.up.railway.app/)
-
 Este projeto consiste no desenvolvimento de um mini framework de backend em PHP, que manipula os dados em um banco PostgreSQL (Há arquivo SQL na pasta com o backup da estrutura).
 
 Todas as rotas Backend estão funcionais.
@@ -11,6 +9,17 @@ O frontend em uso foi feito usando PHP.
 Há uma versão do frontend feita em `NextJS` + `TailwindCSS` na pasta `frontend`. As requisições são feitas via HTTP para o backend.
 
 A ideia foi fazer um exemplo de um backend em PHP que funcione como uma API, com suporte a `JWT` e `Middlewares`, para controlar permissões de usuários, manutenção das rotas e alta escalabilidade.
+
+[Live Preview](https://php-rest-mini-market-production.up.railway.app/)
+
+```bash
+# usuário
+testes
+# senha
+testes
+# ou
+masterkey
+```
 
 ![Tela de Ponto de Venda](https://github.com/edimilsonassis/php-rest-mini-market/blob/053d1d24b2c4c8c43b622ae4ef12f3eb91bfa142/screenshots/php/localhost_8080_pdv.png)
 
